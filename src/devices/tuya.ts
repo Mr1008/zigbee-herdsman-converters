@@ -5637,12 +5637,11 @@ export const definitions: DefinitionWithExtend[] = [
         },
     },
     {
-        fingerprint: tuya.fingerprint("TS0505B", ["_TZB210_3zfp8mki", "_TZB210_gj0ccsar", "_TZ3210_jaap6jeb"]),
+        fingerprint: tuya.fingerprint("TS0505B", ["_TZB210_gj0ccsar", "_TZ3210_jaap6jeb"]),
         model: "TS0505B_3",
         vendor: "Tuya",
         description: "Zigbee RGB+CCT light",
         whiteLabel: [
-            tuya.whitelabel("Skydance", "WZ5_dim_2", "Zigbee & RF 5 in 1 LED controller (DIM mode)", ["_TZB210_3zfp8mki"]),
             tuya.whitelabel("QA", "QADZC5", "5 in 1 LED controller", ["_TZB210_gj0ccsar"]),
             tuya.whitelabel("LEDEPLY", "SG45-E26", "Zigbee A15 5W Smart Bulbs", ["_TZ3210_jaap6jeb"]),
         ],
@@ -5650,6 +5649,26 @@ export const definitions: DefinitionWithExtend[] = [
             m.light({
                 colorTemp: {range: [153, 500]},
                 color: {modes: ["hs"], applyRedFix: true, enhancedHue: false},
+            }),
+        ],
+        configure: (device, coordinatorEndpoint) => {
+            device.getEndpoint(1).saveClusterAttributeKeyValue("lightingColorCtrl", {
+                colorCapabilities: 29,
+            });
+        },
+    },
+    {
+        fingerprint: tuya.fingerprint("TS0505B", ["_TZB210_3zfp8mki"]),
+        model: "ZBS-RGB+CCT",
+        vendor: "Tuya",
+        description: "WZS5 Zigbee RGB+CCT LED controller",
+        whiteLabel: [tuya.whitelabel("Skydance", "WZS5", "Zigbee & RF 5 in 1 LED controller (RGB+CCT mode)", ["_TZB210_3zfp8mki"])],
+        extend: [
+            tuya.modernExtend.tuyaLight({
+                colorTemp: {range: [153, 500]},
+                color: {modes: ["hs"], applyRedFix: true, enhancedHue: false},
+                effect: false,
+                doNotDisturb: false,
             }),
         ],
         configure: (device, coordinatorEndpoint) => {
@@ -8499,13 +8518,14 @@ export const definitions: DefinitionWithExtend[] = [
         },
     },
     {
-        fingerprint: tuya.fingerprint("TS0503B", ["_TZB210_lmqquxus"]),
+        fingerprint: [...tuya.fingerprint("TS0503B", ["_TZB210_lmqquxus"]), ...tuya.fingerprint("TS0502B", ["_TZ3210_3folyaq6"])],
         zigbeeModel: ["TS0502B"],
         model: "TS0502B",
         vendor: "Tuya",
         description: "Light controller",
         fromZigbee: [fzLocal.FUT035ZrfColorTemp],
         whiteLabel: [
+            tuya.whitelabel("Tuya", "ZBS-CCT", "WZS2 Zigbee CCT LED controller", ["_TZ3210_3folyaq6"]),
             tuya.whitelabel("Mercator Ikuü", "SMI7040", "Ford Batten Light", ["_TZ3000_zw7wr5uo"]),
             {
                 vendor: "Mercator Ikuü",
@@ -8536,6 +8556,7 @@ export const definitions: DefinitionWithExtend[] = [
             tuya.modernExtend.tuyaLight({
                 colorTemp: {range: [153, 500]},
                 configureReporting: true,
+                effect: false,
             }),
         ],
         configure: async (device, coordinatorEndpoint) => {

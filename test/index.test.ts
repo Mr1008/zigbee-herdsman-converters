@@ -99,6 +99,34 @@ describe("ZHC", () => {
         expect(definition2.vendor).toBe("Tuya");
     });
 
+    it("resolves WZS5 and WZS2 to their Tuya product profiles", async () => {
+        const wzs5 = await findByDevice(
+            mockDevice(
+                {
+                    modelID: "TS0505B",
+                    manufacturerName: "_TZB210_3zfp8mki",
+                    endpoints: [],
+                },
+                "Router",
+            ),
+        );
+        const wzs2 = await findByDevice(
+            mockDevice(
+                {
+                    modelID: "TS0502B",
+                    manufacturerName: "_TZ3210_3folyaq6",
+                    endpoints: [],
+                },
+                "Router",
+            ),
+        );
+
+        expect(wzs5.model).toBe("WZS5");
+        expect(wzs5.vendor).toBe("Skydance");
+        expect(wzs2.model).toBe("ZBS-CCT");
+        expect(wzs2.vendor).toBe("Tuya");
+    });
+
     it("finds definition by prioritized fingerprints", async () => {
         const device1 = mockDevice(
             {
