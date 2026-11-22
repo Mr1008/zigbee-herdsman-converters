@@ -125,6 +125,8 @@ describe("ZHC", () => {
         expect(wzs5.vendor).toBe("Skydance");
         expect(wzs2.model).toBe("ZBS-CCT");
         expect(wzs2.vendor).toBe("Tuya");
+        expect(wzs5.meta?.tuyaDatapoints?.some(([dp, key]) => dp === 8 && key === "music_data")).toBe(true);
+        expect(wzs2.meta?.tuyaDatapoints?.some(([dp, key]) => dp === 33 && key === "power_memory")).toBe(true);
     });
 
     it("finds definition by prioritized fingerprints", async () => {
