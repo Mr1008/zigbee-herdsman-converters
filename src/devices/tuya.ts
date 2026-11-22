@@ -8575,14 +8575,14 @@ export const definitions: DefinitionWithExtend[] = [
         },
     },
     {
-        fingerprint: [...tuya.fingerprint("TS0503B", ["_TZB210_lmqquxus"]), ...tuya.fingerprint("TS0502B", ["_TZ3210_3folyaq6"])],
+        fingerprint: [...tuya.fingerprint("TS0503B", ["_TZB210_lmqquxus"]), ...tuya.fingerprint("TS0502B", ["_TZ3210_3fokyaq6"])],
         zigbeeModel: ["TS0502B"],
         model: "TS0502B",
         vendor: "Tuya",
         description: "Light controller",
         fromZigbee: [fzLocal.FUT035ZrfColorTemp],
         whiteLabel: [
-            tuya.whitelabel("Tuya", "ZBS-CCT", "WZS2 Zigbee CCT LED controller", ["_TZ3210_3folyaq6"]),
+            tuya.whitelabel("Tuya", "ZBS-CCT", "WZS2 Zigbee CCT LED controller", ["_TZ3210_3fokyaq6"]),
             tuya.whitelabel("Mercator Ikuü", "SMI7040", "Ford Batten Light", ["_TZ3000_zw7wr5uo"]),
             {
                 vendor: "Mercator Ikuü",

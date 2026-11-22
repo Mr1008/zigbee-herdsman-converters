@@ -114,7 +114,7 @@ describe("ZHC", () => {
             mockDevice(
                 {
                     modelID: "TS0502B",
-                    manufacturerName: "_TZ3210_3folyaq6",
+                    manufacturerName: "_TZ3210_3fokyaq6",
                     endpoints: [],
                 },
                 "Router",

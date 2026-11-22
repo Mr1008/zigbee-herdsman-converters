@@ -28,12 +28,7 @@ const commonExposes = [
         .withValueMax(1000)
         .withDescription("White-light colour temperature value used by the Tuya app (0-1000)"),
     e.text("scene_data", ea.STATE_SET).withDescription("Encoded lighting scene data (hexadecimal string)"),
-    e
-        .numeric("countdown", ea.STATE_SET)
-        .withUnit("s")
-        .withValueMin(0)
-        .withValueMax(86400)
-        .withDescription("Remaining countdown time"),
+    e.numeric("countdown", ea.STATE_SET).withUnit("s").withValueMin(0).withValueMax(86400).withDescription("Remaining countdown time"),
     e.text("control_data", ea.SET).withDescription("Transient lighting adjustment data for real-time preview (hexadecimal string)"),
     e
         .numeric("zll_value", ea.STATE_SET)
@@ -83,7 +78,7 @@ export default [
         },
     },
     {
-        fingerprint: [{modelID: "TS0502B", manufacturerName: "_TZ3210_3folyaq6"}],
+        fingerprint: [{modelID: "TS0502B", manufacturerName: "_TZ3210_3fokyaq6"}],
         model: "ZBS-CCT",
         vendor: "Tuya",
         description: "WZS2 Zigbee CCT LED controller",
